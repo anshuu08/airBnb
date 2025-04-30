@@ -88,6 +88,12 @@ app.use((req, res, next) => {
 //     res.send(registeredUser);
 // });
 
+app.use((req, res, next) => {
+  res.locals.currUser = req.user;
+  next();
+});
+
+
 //Create route
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewRouter);
